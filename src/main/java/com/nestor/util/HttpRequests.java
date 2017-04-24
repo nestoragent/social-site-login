@@ -25,7 +25,7 @@ public class HttpRequests {
      */
     private HttpRequests() {}
 
-    public static int sendTwitterPost(Map<String, ?> params) {
+    public static void sendTwitterPost(Map<String, ?> params) {
         ResponseBody body = given().
                 param("oauth_callback", "http://172.29.84.43:8080/webservice/").
                 param("oauth_consumer_key", Props.get("user.consumer_key")).
@@ -39,6 +39,7 @@ public class HttpRequests {
                 post("https://api.twitter.com/oauth/request_token").
                 body();
         body.prettyPrint();
+
     }
 
     /**
