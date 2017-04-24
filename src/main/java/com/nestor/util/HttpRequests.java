@@ -1,5 +1,7 @@
 package com.nestor.util;
 
+import io.restassured.response.ResponseBody;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -7,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Map;
+
+import static io.restassured.RestAssured.given;
 
 
 /**
@@ -19,9 +23,23 @@ public class HttpRequests {
     /**
      * Class not for extends
      */
-    private HttpRequests() {
-    }
+    private HttpRequests() {}
 
+    public static int sendTwitterPost(Map<String, ?> params) {
+        ResponseBody body = given().
+                param("oauth_callback", "http://172.29.84.43:8080/webservice/").
+                param("oauth_consumer_key", Props.get("user.consumer_key")).
+                param("oauth_token", Props.get("user.token")).
+                param("oauth_nonce", "ea9ec8429b68d6b77cd5600adbbb0456").
+                param("oauth_signature_method", "HMAC-SHA1").
+                param("oauth_timestamp", System.currentTimeMillis()).
+                param("oauth_version", "1.0").
+                params(params).
+                when().
+                post("https://api.twitter.com/oauth/request_token").
+                body();
+        body.prettyPrint();
+    }
 
     /**
      * method to send get requests
@@ -46,14 +64,15 @@ public class HttpRequests {
         con.setRequestMethod("POST");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-        StringBuffer urlParameters = new StringBuffer();
-        params.forEach((k, v) -> urlParameters.append(k).append("=").append(v.toString()));
-
+//        StringBuffer urlParameters = new StringBuffer();
+//        params.forEach((k, v) -> urlParameters.append(k).append("=").append(v.toString()));
+        String urlParameters = "oauth_callback=http://172.29.84.43:8080/webservice/";
         // Send post request
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlParameters.toString());
+        wr.writeBytes(urlParameters);
         wr.flush();
         wr.close();
 
@@ -77,4 +96,6 @@ public class HttpRequests {
 
         return responseCode;
     }
+
+
 }
