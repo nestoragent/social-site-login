@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by sbt-velichko-aa on 16.03.17.
  */
 @Controller
+@RequestMapping("/Twitter")
 public class TwitterController {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);

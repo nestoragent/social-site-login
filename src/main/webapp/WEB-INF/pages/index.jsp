@@ -66,10 +66,10 @@
 
             <form:form action="loginButtons" method="post">
                 <c:forEach var="listValue" items="${buttonsList}">
-                    <button name="${listValue}" type="submit" class="btn btn-primary">Login via ${listValue}
+                    <input class="content" path="/${listValue}" name="${listValue}" type="submit" class="btn btn-primary">Login via ${listValue}
                         <img alt="Sign in with Twitter"
                              src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png">
-                    </button>
+                    </input>
                     <br>
                 </c:forEach>
             </form:form>

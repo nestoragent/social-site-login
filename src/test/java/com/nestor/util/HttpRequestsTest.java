@@ -23,18 +23,18 @@ public class HttpRequestsTest {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-         ResponseBody body = given().
-                param("oauth_callback", "http://172.29.84.43:8080/webservice/").
-//                param("oauth_consumer_key", "cChZNFj6T5R0TigYB9yd1w").
-//                param("oauth_nonce", "ea9ec8429b68d6b77cd5600adbbb0456").
-//                param("oauth_signature", "F1Li3tvehgcraF8DMJ7OyxO4w9Y%3D").
-//                param("oauth_signature_method", "HMAC-SHA1").
-                param("oauth_timestamp", System.currentTimeMillis()).
-                param("oauth_version", "1.0").
-                when().
-                post("https://api.twitter.com/oauth/request_token").
-                body();
-        body.prettyPrint();
+//         ResponseBody body = given().
+//                param("oauth_callback", "http://172.29.84.43:8080/webservice/").
+////                param("oauth_consumer_key", "cChZNFj6T5R0TigYB9yd1w").
+////                param("oauth_nonce", "ea9ec8429b68d6b77cd5600adbbb0456").
+////                param("oauth_signature", "F1Li3tvehgcraF8DMJ7OyxO4w9Y%3D").
+////                param("oauth_signature_method", "HMAC-SHA1").
+//                param("oauth_timestamp", System.currentTimeMillis()).
+//                param("oauth_version", "1.0").
+//                when().
+//                post("https://api.twitter.com/oauth/request_token").
+//                body();
+//        body.prettyPrint();
 //        Assert.assertEquals(200, responseToken);
     }
 
