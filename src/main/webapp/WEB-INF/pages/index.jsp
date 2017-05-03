@@ -64,12 +64,25 @@
             <h3>Test</h3>
             <p>Lorem ipsum...</p>
 
+            <form:form method = "GET" action = "/vk/login">
+                <table>
+                    <tr>
+                        <td>
+                            <button>
+                                <img alt="Sign in with Twitter"
+                                     src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png">
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form:form>
+
             <form:form action="loginButtons" method="post">
                 <c:forEach var="listValue" items="${buttonsList}">
-                    <input class="content" path="/${listValue}" name="${listValue}" type="submit" class="btn btn-primary">Login via ${listValue}
+                    <button name="${listValue}" type="submit" class="btn btn-primary">Login via ${listValue}
                         <img alt="Sign in with Twitter"
                              src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png">
-                    </input>
+                    </button>
                     <br>
                 </c:forEach>
             </form:form>
